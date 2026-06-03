@@ -3,6 +3,12 @@ set -e
 
 # This file is install script for betterleaks devcontainer feature. It will be download betterleaks binary file from GitHub Releases and install on /usr/local/bin. Need to require to set execution privilege to betterleaks binary file.
 
+# Check pre-requirement: curl or wget
+apt-get update
+if ! [ -x "$(command -v curl)" ] || ! [ -x "$(command -v jq)" ]; then
+    apt-get install -y curl jq
+fi
+
 # Download betterleaks binary file from GitHub Releases
 echo "Downloading betterleaks binary file from GitHub Releases..."
 
