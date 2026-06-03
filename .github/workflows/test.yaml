@@ -17,9 +17,14 @@ jobs:
         baseImage:
           - debian:latest
           - ubuntu:latest
-          - mcr.microsoft.com/devcontainers/base:ubuntu
     steps:
       - uses: actions/checkout@v6
+
+      - name: "Signin to DockerHub"
+        uses: docker/login-action@650006c6eb7dba73a995cc03b0b2d7f5ca915bee
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
 
       - name: "Install latest devcontainer CLI"
         run: npm install -g @devcontainers/cli
@@ -38,6 +43,12 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
+      - name: "Signin to DockerHub"
+        uses: docker/login-action@650006c6eb7dba73a995cc03b0b2d7f5ca915bee
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
+
       - name: "Install latest devcontainer CLI"
         run: npm install -g @devcontainers/cli
 
@@ -49,6 +60,12 @@ jobs:
     continue-on-error: true
     steps:
       - uses: actions/checkout@v6
+
+      - name: "Signin to DockerHub"
+        uses: docker/login-action@650006c6eb7dba73a995cc03b0b2d7f5ca915bee
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
 
       - name: "Install latest devcontainer CLI"
         run: npm install -g @devcontainers/cli
