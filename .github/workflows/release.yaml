@@ -38,10 +38,11 @@ jobs:
           git checkout -b $branch
           message='Automated documentation update'
           # Add / update and commit
-          git add */**/README.md
+          git add src/**/README.md
           git commit -m 'Automated documentation update [skip ci]' || export NO_UPDATES=true
           # Push
           if [ "$NO_UPDATES" != "true" ] ; then
-              git push origin "$branch"
-              gh pr create --title "$message" --body "$message"
+            git push origin "$branch"
+            gh pr create --title "$message" --body "$message" || \
+              echo "PR creation skipped: enable GitHub Actions PR creation in repository settings."
           fi
