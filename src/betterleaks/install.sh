@@ -23,10 +23,10 @@ function install_prerequisite() {
     elif [ -x "$(command -v yum)" ]; then
         yum install -y curl jq
     elif [ -x "$(command -v dnf)" ]; then
-        dnf install -y ca-certificates tar gzip \
+        dnf install -y ca-certificates tar gzip jq \
             && dnf clean all
     elif [ -x "$(command -v microdnf)" ]; then
-        microdnf install -y ca-certificates tar gzip \
+        microdnf install -y ca-certificates tar gzip jq \
             && microdnf clean all
     else
         echo "Error: Unsupported package manager. Supported package manager: apt-get, yum, dnf, microdnf."
