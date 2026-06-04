@@ -47,8 +47,6 @@ else
     install_prerequisite
 fi
 
-install_prerequisite
-
 # Download betterleaks binary file from GitHub Releases
 echo "Downloading betterleaks binary file from GitHub Releases..."
 
