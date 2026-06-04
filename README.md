@@ -1,6 +1,7 @@
 # Dev Container Features
 
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/8f95367839da4477a3c60c031a729dc0)](https://app.codacy.com/gh/kuju63/devcontainer-features/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/8f95367839da4477a3c60c031a729dc0)](https://app.codacy.com/gh/kuju63/devcontainer-features/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade) [![CI - Test Features](https://github.com/kuju63/devcontainer-features/actions/workflows/test.yaml/badge.svg)](https://github.com/kuju63/devcontainer-features/actions/workflows/test.yaml) [![GitHub License](https://img.shields.io/github/license/kuju63/devcontainer-features)](https://github.com/kuju63/devcontainer-features/blob/main/LICENSE)
+
 
 ## Features
 
