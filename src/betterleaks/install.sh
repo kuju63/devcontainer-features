@@ -17,13 +17,17 @@ function os_type() {
 function install_prerequisite() {
     if [ -x "$(command -v apt-get)" ]; then
         apt-get update
-        apt-get install -y curl jq
+        apt-get install -y --no-install-recommends curl ca-certificates tar gzip jq \
+            && apt-get clean \
+            && rm -rf /var/lib/apt/lists/*
     elif [ -x "$(command -v yum)" ]; then
         yum install -y curl jq
     elif [ -x "$(command -v dnf)" ]; then
-        dnf install -y curl jq
+        dnf install -y ca-certificates tar gzip \
+            && dnf clean all
     elif [ -x "$(command -v microdnf)" ]; then
-        microdnf install -y curl jq
+        microdnf install -y ca-certificates tar gzip \
+            && microdnf clean all
     else
         echo "Error: Unsupported package manager. Supported package manager: apt-get, yum, dnf, microdnf."
         exit 1
@@ -34,6 +38,13 @@ OS=$(os_type)
 if [ "$OS" != "debian" ] && [ "$OS" != "ubuntu" ] && [ "$OS" != "centos" ] && [ "$OS" != "rhel" ]; then
     echo "Error: Unsupported linux distribution $OS. Supported linux distribution: debian, ubuntu, centos, RedHat Linux(UBI)."
     exit 1
+fi
+
+if ([ -x "$(which curl)" ] || [ -x "$(which wget)" ]) && [ -x "$(which jq)" ] && [ -x "$(which tar)" ]; then
+    echo "curl, wget, jq, and tar are already installed."
+else
+    echo "Installing prerequisite packages..."
+    install_prerequisite
 fi
 
 install_prerequisite
