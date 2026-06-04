@@ -25,7 +25,7 @@ function install_prerequisite() {
     elif [ -x "$(command -v microdnf)" ]; then
         microdnf install -y curl jq
     else
-        echo "Error: Unsupported package manager. Supported package manager: apt-get, yum, dnf."
+        echo "Error: Unsupported package manager. Supported package manager: apt-get, yum, dnf, microdnf."
         exit 1
     fi
 }
