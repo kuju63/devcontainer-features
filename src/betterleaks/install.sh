@@ -22,6 +22,8 @@ function install_prerequisite() {
         yum install -y curl jq
     elif [ -x "$(command -v dnf)" ]; then
         dnf install -y curl jq
+    elif [ -x "$(command -v microdnf)" ]; then
+        microdnf install -y curl jq
     else
         echo "Error: Unsupported package manager. Supported package manager: apt-get, yum, dnf."
         exit 1
