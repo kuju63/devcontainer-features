@@ -73,16 +73,7 @@ else
     exit 1
 fi
 
-if [ $(which curl) ]; then
-    curl -L -o betterleaks.tar.gz "$URL"
-elif [ $(which wget) ]; then
-    wget -O betterleaks.tar.gz "$URL"
-elif [ $(which curl-minimal) ]; then
-    curl -L -o betterleaks.tar.gz "$URL"
-else
-    echo "Error: curl or wget or curl-minimal is required to download betterleaks."
-    exit 1
-fi
+curl -L -o betterleaks.tar.gz "$URL"
 
 # Extract betterleaks binary file from tar.gz
 echo "Extracting betterleaks binary file from tar.gz..."
