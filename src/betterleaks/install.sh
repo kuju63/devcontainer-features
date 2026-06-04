@@ -3,11 +3,38 @@ set -e
 
 # This file is install script for betterleaks devcontainer feature. It will be download betterleaks binary file from GitHub Releases and install on /usr/local/bin. Need to require to set execution privilege to betterleaks binary file.
 
-# Check pre-requirement: curl or wget
-apt-get update
-if ! [ -x "$(command -v curl)" ] || ! [ -x "$(command -v jq)" ]; then
-    apt-get install -y curl jq
+# Check linux distribution. Supported linux distribution: debian, ubuntu, centos, RedHat Linux(UBI).
+function os_type() {
+    if [ -f /etc/os-release ]; then
+        . /etc/os-release
+        echo "$ID"
+    else
+        echo "unknown"
+    fi
+}
+
+# Install prerequisite packages. Supported package manager: apt-get, yum, dnf.
+function install_prerequisite() {
+    if [ -x "$(command -v apt-get)" ]; then
+        apt-get update
+        apt-get install -y curl jq
+    elif [ -x "$(command -v yum)" ]; then
+        yum install -y curl jq
+    elif [ -x "$(command -v dnf)" ]; then
+        dnf install -y curl jq
+    else
+        echo "Error: Unsupported package manager. Supported package manager: apt-get, yum, dnf."
+        exit 1
+    fi
+}
+
+OS=$(os_type)
+if [ "$OS" != "debian" ] && [ "$OS" != "ubuntu" ] && [ "$OS" != "centos" ] && [ "$OS" != "rhel" ]; then
+    echo "Error: Unsupported linux distribution $OS. Supported linux distribution: debian, ubuntu, centos, RedHat Linux(UBI)."
+    exit 1
 fi
+
+install_prerequisite
 
 # Download betterleaks binary file from GitHub Releases
 echo "Downloading betterleaks binary file from GitHub Releases..."

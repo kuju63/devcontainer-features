@@ -17,6 +17,8 @@ jobs:
         baseImage:
           - debian:latest
           - ubuntu:latest
+          - redhat/ubi10-minimal:latest-source
+          - redhat/ubi9-minimal:latest-source
     steps:
       - uses: actions/checkout@v6
 
