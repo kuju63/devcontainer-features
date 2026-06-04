@@ -40,7 +40,7 @@ if [ "$OS" != "debian" ] && [ "$OS" != "ubuntu" ] && [ "$OS" != "centos" ] && [ 
     exit 1
 fi
 
-if ([ -x "$(which curl)" ] || [ -x "$(which wget)" ]) && [ -x "$(which jq)" ] && [ -x "$(which tar)" ]; then
+if ([ -x "$(which curl)" ] || [ -x "$(which wget)" ] || [ -x "$(which curl-minimal)" ]) && [ -x "$(which jq)" ] && [ -x "$(which tar)" ]; then
     echo "curl, wget, jq, and tar are already installed."
 else
     echo "Installing prerequisite packages..."
@@ -77,8 +77,10 @@ if [ $(which curl) ]; then
     curl -L -o betterleaks.tar.gz "$URL"
 elif [ $(which wget) ]; then
     wget -O betterleaks.tar.gz "$URL"
+elif [ $(which curl-minimal) ]; then
+    curl -L -o betterleaks.tar.gz "$URL"
 else
-    echo "Error: curl or wget is required to download betterleaks."
+    echo "Error: curl or wget or curl-minimal is required to download betterleaks."
     exit 1
 fi
 
