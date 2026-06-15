@@ -1,7 +1,7 @@
 {
   "name": "betterleaks",
   "id": "betterleaks",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "A feature to help you find better leaks",
   "options": {
     "version": {
