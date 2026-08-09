@@ -20,7 +20,7 @@ jobs:
           - redhat/ubi10-minimal:latest
           - redhat/ubi9-minimal:latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: "Signin to DockerHub"
         uses: docker/login-action@650006c6eb7dba73a995cc03b0b2d7f5ca915bee
@@ -43,7 +43,7 @@ jobs:
           - betterleaks
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: "Signin to DockerHub"
         uses: docker/login-action@650006c6eb7dba73a995cc03b0b2d7f5ca915bee
@@ -61,7 +61,7 @@ jobs:
     runs-on: ubuntu-latest
     continue-on-error: true
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: "Signin to DockerHub"
         uses: docker/login-action@650006c6eb7dba73a995cc03b0b2d7f5ca915bee
